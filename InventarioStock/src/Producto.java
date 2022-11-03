@@ -2,16 +2,15 @@ public class Producto {
 
     //Atributos
     private String nombre;
-    private String descripcion;
     private int id;
     private int cantidad;
+    private int minimo;
     private double precio;
 
 
     //Constructores
     public Producto(String nombre, int id, int cantidad, double precio) {
         this.nombre = nombre;
-        this.descripcion = descripcion;
         this.id = id;
         this.cantidad = cantidad;
         this.precio = precio;
@@ -29,14 +28,6 @@ public class Producto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public int getId() {

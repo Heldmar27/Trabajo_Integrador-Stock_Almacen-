@@ -10,7 +10,11 @@ public class Almacen {
     }
 
     public void eliminarProducto(int id){
-    listaProductos.removeIf(producto -> producto.equals(id));
+        for (Producto producto: listaProductos) {
+        if (producto.getId() == id){
+            listaProductos.remove(producto);
+             }
+        }
     }
 
     public void verAlmacen() {

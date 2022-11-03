@@ -8,5 +8,8 @@ public class Main {
     almacen.agregarProducto(p1);
     almacen.agregarProducto(p2);
     almacen.verAlmacen();
+    almacen.eliminarProducto(1);
+        System.out.println("----");
+    almacen.verAlmacen();
     }
 }
