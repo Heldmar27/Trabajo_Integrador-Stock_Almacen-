@@ -1,4 +1,7 @@
-public class Producto {
+import java.io.Serializable;
+import java.util.Locale;
+
+public class Producto implements Serializable {
 
     //Atributos
     private String nombre;
@@ -14,12 +17,26 @@ public class Producto {
         this.id = id;
         this.cantidad = cantidad;
         this.precio = precio;
+        this.minimo = 10;
     }
 
-    public Producto(){
+    public Producto(){};
 
-    };
+    public boolean pocoStock(){
+        return cantidad <= minimo;
+    }
 
+    public boolean comparar(String nombre){
+        return this.nombre.toLowerCase().equals(nombre.toLowerCase());
+    }
+
+    public void retirarCantidad(int cantidad){
+        if (cantidad >= this.cantidad){
+            this.cantidad = 0;
+        } else {
+            this.cantidad -= cantidad;
+        }
+    }
 
     //Getter & Setter
     public String getNombre() {
@@ -43,7 +60,7 @@ public class Producto {
     }
 
     public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+        this.cantidad -= cantidad;
     }
 
     public double getPrecio() {

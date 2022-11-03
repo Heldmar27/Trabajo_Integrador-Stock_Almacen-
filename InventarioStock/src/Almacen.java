@@ -1,25 +1,42 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Almacen {
+public class Almacen implements Serializable {
 
     ArrayList<Producto> listaProductos = new ArrayList<>();
+    private GeneradorID generadorID = new GeneradorID(0);
 
     //Métodos
-    public void agregarProducto(Producto producto){
-    listaProductos.add(producto);
+    public void agregarProducto(String nombre, double precio, int cantidad){
+        listaProductos.add(new Producto(nombre, generadorID.generarID(),cantidad,precio));
     }
 
-    public void eliminarProducto(int id){
-        for (Producto producto: listaProductos) {
-        if (producto.getId() == id){
-            listaProductos.remove(producto);
-             }
-        }
+    public void retirarProducto(Producto producto, int cantidad){
+        producto.retirarCantidad(cantidad);
     }
 
-    public void verAlmacen() {
+    public void verProductos() {
         for (Producto producto: listaProductos) {
             System.out.println(producto.getNombre() + "\n");
         }
+    }
+
+    public boolean existeProducto(String nombre){
+        for (Producto p: listaProductos) {
+            if (p.comparar(nombre)) return true;
+        }
+        return false;
+    }
+
+    public String verInforme(){
+        String informe = "";
+
+        for (Producto p :listaProductos) {
+            if (p.pocoStock()){
+                informe += p.getNombre() + "\n";
+            }
+        }
+
+        return informe;
     }
 }
