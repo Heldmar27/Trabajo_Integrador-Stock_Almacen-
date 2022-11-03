@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Ventana">
-  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="9" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="8" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="573" height="676"/>
@@ -16,15 +16,7 @@
           <text value="Almacen"/>
         </properties>
       </component>
-      <component id="62d8a" class="javax.swing.JTable" binding="table1" default-binding="true">
-        <constraints>
-          <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="2" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="ad83" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="ad83" class="javax.swing.JTextField" binding="LeerCantidad">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -34,7 +26,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="e77c6" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+      <component id="e77c6" class="javax.swing.JTextField" binding="LeerNombre">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -44,7 +36,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="c7d8e" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="c7d8e" class="javax.swing.JTextField" binding="LeerPrecio">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -116,13 +108,18 @@
           <text value="Ver Informe"/>
         </properties>
       </component>
-      <scrollpane id="b71fa">
+      <scrollpane id="b71fa" binding="JScrollPane">
         <constraints>
-          <grid row="8" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
-        <children/>
+        <children>
+          <component id="62d8a" class="javax.swing.JTable" binding="table1" default-binding="true">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
       </scrollpane>
     </children>
   </grid>

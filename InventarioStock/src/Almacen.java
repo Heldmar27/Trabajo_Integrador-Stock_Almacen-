@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -8,7 +9,9 @@ public class Almacen implements Serializable {
 
     //Métodos
     public void agregarProducto(String nombre, double precio, int cantidad){
-        listaProductos.add(new Producto(nombre, generadorID.generarID(),cantidad,precio));
+        if(!existeProducto(nombre)){
+            listaProductos.add(new Producto(nombre, generadorID.generarID(),cantidad,precio));
+        }
     }
 
     public void retirarProducto(Producto producto, int cantidad){
@@ -36,7 +39,15 @@ public class Almacen implements Serializable {
                 informe += p.getNombre() + "\n";
             }
         }
-
         return informe;
+    }
+
+    public void modificarProducto(String nombre , double precio){
+
+        for (Producto p:listaProductos) {
+            if(p.comparar(nombre)){
+                p.setPrecio(precio);
+            }
+        }
     }
 }

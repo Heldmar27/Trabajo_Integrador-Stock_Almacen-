@@ -14,5 +14,8 @@ public class Main {
     almacen.verAlmacen();
 
          */
+
+        Ventana ventana = new Ventana();
+
     }
 }
