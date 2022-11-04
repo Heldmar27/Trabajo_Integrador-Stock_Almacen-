@@ -16,6 +16,7 @@ public class Main {
          */
 
         Ventana ventana = new Ventana();
+        ventana.addWindowListener(new EventoVentana());
 
     }
 }

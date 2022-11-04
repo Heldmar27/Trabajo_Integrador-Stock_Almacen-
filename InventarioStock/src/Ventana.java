@@ -2,11 +2,13 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
-public class Ventana extends JFrame{
+public class Ventana extends JFrame {
 
-    private Almacen almacen;
+    static Almacen almacen;
     private Archivo archivo = new Archivo();
     private String [] culumnas = {"id","nombre","precio","cantidad"};
     private DefaultTableModel model = new DefaultTableModel();
@@ -40,6 +42,8 @@ public class Ventana extends JFrame{
 
         model.setColumnIdentifiers(culumnas);
 
+        mostrarTabla();
+
 
         agregarButton.addActionListener(new ActionListener() {
             @Override
@@ -50,6 +54,7 @@ public class Ventana extends JFrame{
                 double precio = Double.parseDouble(LeerPrecio.getText());
 
                 almacen.agregarProducto(nombre,precio,cantidad);
+                mostrarTabla();
 
             }
         });
@@ -83,7 +88,11 @@ public class Ventana extends JFrame{
 
 
     public void mostrarTabla(){
-
+        for (Producto p: almacen.listaProductos) {
+            String[] datos = {""+p.getId(), p.getNombre(),""+p.getPrecio(),""+p.getCantidad()};
+            //System.out.println(datos[0]+ " " + datos[1]);
+            model.addRow(datos);
+        }
     }
 
 
