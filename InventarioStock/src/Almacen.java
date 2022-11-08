@@ -33,13 +33,18 @@ public class Almacen implements Serializable {
 
     public String verInforme(){
         String informe = "";
+        int cant = 0;
 
         for (Producto p :listaProductos) {
             if (p.pocoStock()){
                 informe += p.getNombre() + "\n";
+                cant++;
             }
         }
-        return informe;
+
+        if (cant > 0){
+            return "Productos con poco Stock: \n" + informe;
+        } else return "Todo esta bien!";
     }
 
     public void modificarProducto(String nombre , double precio){

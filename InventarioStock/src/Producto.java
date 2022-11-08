@@ -38,6 +38,12 @@ public class Producto implements Serializable {
         }
     }
 
+    public void modificar(String nombre, double precio, int cantidad){
+        this.precio = precio;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+    }
+
     //Getter & Setter
     public String getNombre() {
         return nombre;

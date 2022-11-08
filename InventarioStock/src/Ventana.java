@@ -1,9 +1,6 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class Ventana extends JFrame {
@@ -41,6 +38,7 @@ public class Ventana extends JFrame {
         }
 
         model.setColumnIdentifiers(culumnas);
+        table1.setModel(model);
 
         mostrarTabla();
 
@@ -49,12 +47,19 @@ public class Ventana extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String nombre = LeerNombre.getText();
-                int cantidad = Integer.parseInt(LeerCantidad.getText());
-                double precio = Double.parseDouble(LeerPrecio.getText());
+                try {
+                    String nombre = LeerNombre.getText();
+                    int cantidad = Integer.parseInt(LeerCantidad.getText());
+                    double precio = Double.parseDouble(LeerPrecio.getText());
 
-                almacen.agregarProducto(nombre,precio,cantidad);
-                mostrarTabla();
+                    limpiarTabla();
+                    almacen.agregarProducto(nombre,precio,cantidad);
+                    mostrarTabla();
+                }catch (Exception exception){
+                    exception.printStackTrace();
+                    JOptionPane.showMessageDialog(null,"Solo numeros!");
+                }
+
 
             }
         });
@@ -63,7 +68,18 @@ public class Ventana extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                //table1.getSelectedRow();
+                String nombre = LeerNombre.getText();
+                double precio = Double.parseDouble(LeerPrecio.getText());
+                int cantidad = Integer.parseInt(LeerCantidad.getText());
+
+                System.out.println(table1.getSelectedRow());
+                Producto actualizarP = almacen.listaProductos.get(table1.getSelectedRow());
+                actualizarP.modificar(nombre,precio,cantidad);
+
+                almacen.verProductos();
+
+                limpiarTabla();
+                mostrarTabla();
 
             }
         });
@@ -84,14 +100,56 @@ public class Ventana extends JFrame {
             }
         });
 
+
+        table1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                Producto producto = almacen.listaProductos.get(table1.getSelectedRow());
+
+                LeerNombre.setText(producto.getNombre());
+                LeerCantidad.setText(String.valueOf(producto.getCantidad()));
+                LeerPrecio.setText(String.valueOf(producto.getPrecio()));
+            }
+        });
+
+        panel1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                LeerNombre.setText("");
+                LeerCantidad.setText("");
+                LeerPrecio.setText("");
+
+                table1.clearSelection();
+            }
+        });
+
+        verInformeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String informe = almacen.verInforme();
+                JOptionPane.showMessageDialog(null,informe);
+            }
+        });
     }
 
 
     public void mostrarTabla(){
+        almacen.verProductos();
+
         for (Producto p: almacen.listaProductos) {
-            String[] datos = {""+p.getId(), p.getNombre(),""+p.getPrecio(),""+p.getCantidad()};
-            //System.out.println(datos[0]+ " " + datos[1]);
+            String[] datos = {Integer.toString(p.getId()), p.getNombre(),String.valueOf(p.getPrecio()), String.valueOf(p.getCantidad())};
+            System.out.println(datos[0]+ " " + datos[1] + " " + datos[2] + " " + datos[3]);
             model.addRow(datos);
+        }
+    }
+
+    public void limpiarTabla(){
+        for (int i = 0; i < almacen.listaProductos.size() ; i++){
+            System.out.println("-- limpiar table --");
+            System.out.println(almacen.listaProductos.get(i).getNombre());
+            model.removeRow(0);
         }
     }
 
