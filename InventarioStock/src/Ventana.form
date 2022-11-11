@@ -117,7 +117,9 @@
         <children>
           <component id="62d8a" class="javax.swing.JTable" binding="table1" default-binding="true">
             <constraints/>
-            <properties/>
+            <properties>
+              <enabled value="true"/>
+            </properties>
           </component>
         </children>
       </scrollpane>

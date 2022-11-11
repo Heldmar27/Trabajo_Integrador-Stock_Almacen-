@@ -1,3 +1,5 @@
+import Exepciones.ExeptionCampoVacio;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
@@ -51,13 +53,23 @@ public class Ventana extends JFrame {
                     String nombre = LeerNombre.getText();
                     int cantidad = Integer.parseInt(LeerCantidad.getText());
                     double precio = Double.parseDouble(LeerPrecio.getText());
+                    verificarCampos(LeerNombre.getText(),LeerCantidad.getText(),LeerPrecio.getText());
 
                     limpiarTabla();
                     almacen.agregarProducto(nombre,precio,cantidad);
                     mostrarTabla();
-                }catch (Exception exception){
+                } catch (ExeptionCampoVacio exeption){
+                    exeption.printStackTrace();
+                    JOptionPane.showMessageDialog(null,"Campos vacios");
+                } catch (Exception exception){
                     exception.printStackTrace();
-                    JOptionPane.showMessageDialog(null,"Solo numeros!");
+                    String msj = "";
+                    if (LeerNombre.getText().isEmpty() ||
+                            LeerPrecio.getText().isEmpty() ||
+                            LeerCantidad.getText().isEmpty()){
+                        msj += "1 o mas Campos vacios\n";
+                    }
+                    JOptionPane.showMessageDialog(null, msj +"Campos cantidad y precio, solo pueden ser numeros");
                 }
 
 
@@ -135,7 +147,7 @@ public class Ventana extends JFrame {
     }
 
 
-    public void mostrarTabla(){
+    private void mostrarTabla(){
         almacen.verProductos();
 
         for (Producto p: almacen.listaProductos) {
@@ -145,11 +157,19 @@ public class Ventana extends JFrame {
         }
     }
 
-    public void limpiarTabla(){
+    private void limpiarTabla(){
         for (int i = 0; i < almacen.listaProductos.size() ; i++){
             System.out.println("-- limpiar table --");
             System.out.println(almacen.listaProductos.get(i).getNombre());
             model.removeRow(0);
+        }
+    }
+
+    private void verificarCampos(String campo1, String campo2, String campo3) throws ExeptionCampoVacio{
+
+        if (campo1.isEmpty() || campo2.isEmpty() || campo3.isEmpty()){
+            ExeptionCampoVacio nuevaExepcion = new ExeptionCampoVacio("Campos vacios");
+            throw nuevaExepcion;
         }
     }
 
