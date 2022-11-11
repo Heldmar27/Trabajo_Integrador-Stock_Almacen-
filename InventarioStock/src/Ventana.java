@@ -10,7 +10,8 @@ public class Ventana extends JFrame {
     static Almacen almacen;
     private Archivo archivo = new Archivo();
     private String [] culumnas = {"id","nombre","precio","cantidad"};
-    private DefaultTableModel model = new DefaultTableModel();
+    private String[][] info;
+    private MyTableModel model = new MyTableModel(info,culumnas);
 
 
     private JTextField LeerCantidad;
@@ -39,7 +40,6 @@ public class Ventana extends JFrame {
             almacen = archivo.leer();
         }
 
-        model.setColumnIdentifiers(culumnas);
         table1.setModel(model);
 
         mostrarTabla();
