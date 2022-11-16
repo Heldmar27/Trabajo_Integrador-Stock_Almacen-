@@ -2,36 +2,39 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VentanaAgregar extends JFrame{
-    private JPanel panelAgregar;
-    private JTextField textFieldCantidad;
+public class VentanaActualizar extends JFrame {
+    private JPanel panelActualizar;
     private JTextField textFieldProducto;
+    private JTextField textFieldCantidad;
+    private JButton aceptarBotton;
+    private JTextField textFieldPrecio;
     private JButton cancelarButton;
-    private JButton aceptarButton;
-    private JLabel labelTitulo;
-    private JLabel labelNombre;
-    private JLabel labelCantidad;
 
-    public VentanaAgregar(Producto producto){
+
+    public VentanaActualizar(Producto producto){
         setSize(500,250);
         setVisible(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        setContentPane(panelAgregar);
+        setContentPane(panelActualizar);
+        textFieldProducto.setText(producto.getNombre());
+        textFieldPrecio.setText(String.valueOf(producto.getPrecio()));
 
 
-        aceptarButton.addActionListener(new ActionListener() {
+
+        aceptarBotton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                textFieldProducto.setText(producto.getNombre());
-                int cantidad = Integer.parseInt(textFieldCantidad.getText());
+                String nombre = textFieldProducto.getName();
+                double precio = Double.parseDouble(textFieldPrecio.getText());
 
-                producto.agregarCantidad(cantidad);
+                producto.modificar(nombre,precio);
                 Ventana.limpiarTabla();
                 Ventana.mostrarTabla();
 
                 dispose();
+
             }
         });
 
@@ -42,5 +45,9 @@ public class VentanaAgregar extends JFrame{
                 dispose();
             }
         });
+
+
     }
+
+
 }

@@ -41,7 +41,7 @@ public class Producto implements Serializable {
         }
     }
 
-    public void modificar(String nombre, double precio, int cantidad){
+    public void modificar(String nombre, double precio){
         this.precio = precio;
         this.nombre = nombre;
     }

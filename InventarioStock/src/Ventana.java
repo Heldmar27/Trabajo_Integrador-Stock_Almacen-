@@ -93,7 +93,7 @@ public class Ventana extends JFrame {
 
                 System.out.println(tableProducto.getSelectedRow());
                 Producto actualizarP = almacen.listaProductos.get(tableProducto.getSelectedRow());
-                actualizarP.modificar(nombre,precio,cantidad);
+                actualizarP.modificar(nombre,precio);
 
                 almacen.verProductos();
 
@@ -130,7 +130,7 @@ public class Ventana extends JFrame {
             }
         });
 
-        panel1.addMouseListener(new MouseAdapter() {
+       /* panel1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
@@ -140,7 +140,7 @@ public class Ventana extends JFrame {
 
                 tableProducto.clearSelection();
             }
-        });
+        });*/
 
         verInformeButton.addActionListener(new ActionListener() {
             @Override
