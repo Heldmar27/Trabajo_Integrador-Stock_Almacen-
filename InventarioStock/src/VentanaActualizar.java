@@ -9,6 +9,9 @@ public class VentanaActualizar extends JFrame {
     private JButton aceptarBotton;
     private JTextField textFieldPrecio;
     private JButton cancelarButton;
+    private JLabel labelTitulo;
+    private JLabel labelPrecio;
+    private JLabel labelNombre;
 
 
     public VentanaActualizar(Producto producto){
@@ -26,9 +29,8 @@ public class VentanaActualizar extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String nombre = textFieldProducto.getName();
+                String nombre = textFieldProducto.getText();
                 double precio = Double.parseDouble(textFieldPrecio.getText());
-
                 producto.modificar(nombre,precio);
                 Ventana.limpiarTabla();
                 Ventana.mostrarTabla();
