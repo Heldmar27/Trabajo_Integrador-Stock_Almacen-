@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.Serializable;
 import java.util.Locale;
 
@@ -33,15 +34,20 @@ public class Producto implements Serializable {
     public void retirarCantidad(int cantidad){
         if (cantidad >= this.cantidad){
             this.cantidad = 0;
+            JOptionPane.showMessageDialog(null,"No se puede retirar esa cantidad!\n" +
+                    "Se retiro en total" +this.cantidad);
         } else {
             this.cantidad -= cantidad;
         }
     }
 
-    public void modificar(String nombre, double precio, int cantidad){
+    public void modificar(String nombre, double precio){
         this.precio = precio;
         this.nombre = nombre;
-        this.cantidad = cantidad;
+    }
+
+    public void agregarCantidad(int cantidad){
+        this.cantidad += cantidad;
     }
 
     //Getter & Setter
