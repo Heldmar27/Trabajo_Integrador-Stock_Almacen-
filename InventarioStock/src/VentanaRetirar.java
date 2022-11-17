@@ -20,6 +20,7 @@ public class VentanaRetirar extends JFrame {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setContentPane(panelRetirar);
         labelMax.setText("/"+producto.getCantidad());
+        textFieldNombre.setText(producto.getNombre());
 
         aceptarButton.addActionListener(new ActionListener() {
             @Override

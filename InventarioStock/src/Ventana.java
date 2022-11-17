@@ -87,6 +87,16 @@ public class Ventana extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                if (tableProducto.getSelectedRow() != -1){
+
+                    Producto productoActualizar = almacen.listaProductos.get(tableProducto.getSelectedRow());
+
+                    VentanaActualizar ventanaActualizar = new VentanaActualizar(productoActualizar);
+                }else {
+                    JOptionPane.showMessageDialog(null,"Debe selecionar un elemento de la tabla!");
+                }
+
+                /*
                 String nombre = LeerNombre.getText();
                 double precio = Double.parseDouble(LeerPrecio.getText());
                 int cantidad = Integer.parseInt(LeerCantidad.getText());
@@ -100,6 +110,8 @@ public class Ventana extends JFrame {
                 limpiarTabla();
                 mostrarTabla();
 
+                 */
+
             }
         });
 
@@ -107,11 +119,13 @@ public class Ventana extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (tableProducto.getSelectedRow() != 1){
+                if (tableProducto.getSelectedRow() != -1){
 
                     Producto productoRetirar = almacen.listaProductos.get(tableProducto.getSelectedRow());
 
                     VentanaRetirar ventanaRetirar = new VentanaRetirar(productoRetirar);
+                }else {
+                    JOptionPane.showMessageDialog(null,"Debe selecionar un elemento de la tabla!");
                 }
 
             }
@@ -154,7 +168,7 @@ public class Ventana extends JFrame {
 
 
     public static void mostrarTabla(){
-        almacen.verProductos();
+        //almacen.verProductos();
 
         for (Producto p: almacen.listaProductos) {
             String[] datos = {Integer.toString(p.getId()), p.getNombre(),String.valueOf(p.getPrecio()), String.valueOf(p.getCantidad())};

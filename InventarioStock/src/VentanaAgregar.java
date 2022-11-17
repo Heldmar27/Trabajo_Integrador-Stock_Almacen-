@@ -18,6 +18,7 @@ public class VentanaAgregar extends JFrame{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setContentPane(panelAgregar);
+        textFieldProducto.setText(producto.getNombre());
 
 
         aceptarButton.addActionListener(new ActionListener() {
