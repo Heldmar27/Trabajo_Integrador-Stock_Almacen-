@@ -26,7 +26,12 @@
         <children>
           <component id="62d8a" class="javax.swing.JTable" binding="tableProducto">
             <constraints/>
-            <properties/>
+            <properties>
+              <cellSelectionEnabled value="false"/>
+              <columnSelectionAllowed value="false"/>
+              <editingColumn value="-1"/>
+              <editingRow value="-1"/>
+            </properties>
           </component>
         </children>
       </scrollpane>

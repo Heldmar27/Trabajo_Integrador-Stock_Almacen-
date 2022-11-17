@@ -6,9 +6,9 @@ public class Ventana extends JFrame {
 
     static Almacen almacen;
     private Archivo archivo = new Archivo();
-    private String [] culumnas = {"id","nombre","precio","cantidad"};
-    private static DefaultTableModel model = new DefaultTableModel();
-
+    private static String [][] hola;
+    private static String [] culumnas = {"id","nombre","precio","cantidad"};
+    private static MyTableModel model = new MyTableModel(hola,culumnas);
 
     private JTextField LeerCantidad;
     private JPanel panel1;
