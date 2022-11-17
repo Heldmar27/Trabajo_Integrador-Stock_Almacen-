@@ -11,6 +11,8 @@ public class Almacen implements Serializable {
     public void agregarProducto(String nombre, double precio, int cantidad){
         if(!existeProducto(nombre)){
             listaProductos.add(new Producto(nombre, generadorID.generarID(),cantidad,precio));
+        } else {
+            JOptionPane.showMessageDialog(null,"El producto ya existe!");
         }
     }
 

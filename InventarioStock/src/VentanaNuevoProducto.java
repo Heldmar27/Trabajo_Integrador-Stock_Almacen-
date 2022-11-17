@@ -1,3 +1,6 @@
+import Exepciones.ExepcionPropia;
+import Exepciones.ExeptionCampoVacio;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,14 +27,25 @@ public class VentanaNuevoProducto extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String nombre = textFieldNombre.getText();
-                double precio = Double.parseDouble(textFieldPrecio.getText());
+                try {
+                    String nombre = textFieldNombre.getText();
+                    double precio = Double.parseDouble(textFieldPrecio.getText());
 
-                Ventana.limpiarTabla();
-                Ventana.almacen.agregarProducto(nombre,precio,0);
-                Ventana.mostrarTabla();
+                    ExepcionPropia.estaCampoVacio(nombre);
 
-                dispose();
+                    Ventana.limpiarTabla();
+                    Ventana.almacen.agregarProducto(nombre,precio,0);
+                    Ventana.mostrarTabla();
+
+                    dispose();
+
+                } catch (ExeptionCampoVacio ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null,"El campo esta vacio!");
+                } catch (NumberFormatException ex){
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null,"El campo necesita un numero!");
+                }
 
             }
         });
