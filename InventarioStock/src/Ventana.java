@@ -5,7 +5,7 @@ public class Ventana extends JFrame {
 
     static Almacen almacen;
     private Archivo archivo = new Archivo();
-    private static String [] columnas = {"id","nombre","precio","cantidad"};
+    private static String [] columnas = {"ID","Nombre","Precio","Cantidad "};
     private static MyTableModel model = new MyTableModel(null, columnas);
 
 
@@ -106,6 +106,14 @@ public class Ventana extends JFrame {
             }
         });
 
+        panel1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                tableProducto.clearSelection();
+            }
+        });
     }
 
 
