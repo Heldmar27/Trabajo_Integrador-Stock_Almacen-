@@ -98,20 +98,6 @@ public class Ventana extends JFrame {
             }
         });
 
-
-        tableProducto.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                Producto producto = almacen.listaProductos.get(tableProducto.getSelectedRow());
-
-                LeerNombre.setText(producto.getNombre());
-                LeerCantidad.setText(String.valueOf(producto.getCantidad()));
-                LeerPrecio.setText(String.valueOf(producto.getPrecio()));
-            }
-        });
-
-
         verInformeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

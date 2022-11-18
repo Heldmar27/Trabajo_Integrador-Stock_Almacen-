@@ -32,11 +32,13 @@ public class Producto implements Serializable {
     }
 
     public void retirarCantidad(int cantidad){
-        if (cantidad >= this.cantidad){
+        if (cantidad > this.cantidad){
+            int retirado = this.cantidad;
             this.cantidad = 0;
             JOptionPane.showMessageDialog(null,"No se puede retirar esa cantidad!\n" +
-                    "Se retiro en total" +this.cantidad);
+                    "Se retiro en total " +retirado);
         } else {
+            JOptionPane.showMessageDialog(null,"Se retiro exitosamente!\n"+ cantidad + " de "+this.nombre);
             this.cantidad -= cantidad;
         }
     }

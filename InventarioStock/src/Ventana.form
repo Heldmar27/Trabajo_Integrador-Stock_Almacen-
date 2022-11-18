@@ -34,6 +34,7 @@
               <columnSelectionAllowed value="false"/>
               <editingColumn value="-1"/>
               <editingRow value="-1"/>
+              <rowSelectionAllowed value="true"/>
             </properties>
           </component>
         </children>
