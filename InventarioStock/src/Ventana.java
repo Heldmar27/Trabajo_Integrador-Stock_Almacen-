@@ -1,14 +1,12 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 
 public class Ventana extends JFrame {
 
     static Almacen almacen;
     private Archivo archivo = new Archivo();
-    private static String [][] hola;
-    private static String [] culumnas = {"id","nombre","precio","cantidad"};
-    private static MyTableModel model = new MyTableModel(hola,culumnas);
+    private static String [] columnas = {"id","nombre","precio","cantidad"};
+    private static MyTableModel model = new MyTableModel(null, columnas);
 
     private JTextField LeerCantidad;
     private JPanel panel1;
@@ -38,7 +36,7 @@ public class Ventana extends JFrame {
             almacen = archivo.leer();
         }
 
-        model.setColumnIdentifiers(culumnas);
+        model.setColumnIdentifiers(columnas);
         tableProducto.setModel(model);
 
         mostrarTabla();
@@ -112,17 +110,6 @@ public class Ventana extends JFrame {
             }
         });
 
-       /* panel1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                LeerNombre.setText("");
-                LeerCantidad.setText("");
-                LeerPrecio.setText("");
-
-                tableProducto.clearSelection();
-            }
-        });*/
 
         verInformeButton.addActionListener(new ActionListener() {
             @Override

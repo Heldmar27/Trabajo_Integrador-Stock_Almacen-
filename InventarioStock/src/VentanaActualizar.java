@@ -35,10 +35,11 @@ public class VentanaActualizar extends JFrame {
                 try {
                     String nombre = textFieldProducto.getText();
                     double precio = Double.parseDouble(textFieldPrecio.getText());
-                    producto.modificar(nombre, precio);
 
                     ExepcionPropia.estaCampoVacio(nombre);
                     ExepcionPropia.estaCampoVacio(String.valueOf(precio));
+
+                    producto.modificar(nombre, precio);
 
                     Ventana.limpiarTabla();
                     Ventana.mostrarTabla();
@@ -46,10 +47,8 @@ public class VentanaActualizar extends JFrame {
                     dispose();
 
                 } catch (ExeptionCampoVacio ex) {
-                    ex.printStackTrace();
                     JOptionPane.showMessageDialog(null,"El campo esta vacio!");
                 } catch (NumberFormatException ex){
-                    ex.printStackTrace();
                     JOptionPane.showMessageDialog(null,"El campo necesita un numero!");
                 }
             }
