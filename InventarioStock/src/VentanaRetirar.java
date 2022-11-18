@@ -33,18 +33,15 @@ public class VentanaRetirar extends JFrame {
                     textFieldNombre.setText(producto.getNombre());
 
                     int cantidad = Integer.parseInt(textFieldCantidad.getText());
-                    producto.retirarCantidad(cantidad);
 
-                    ExepcionPropia.estaCampoVacio(String.valueOf(cantidad));
+
+                    producto.retirarCantidad(cantidad);
 
                     Ventana.limpiarTabla();
                     Ventana.mostrarTabla();
 
                     dispose();
 
-                } catch (ExeptionCampoVacio ex) {
-                    ex.printStackTrace();
-                    JOptionPane.showMessageDialog(null,"El campo esta vacio!");
                 } catch (NumberFormatException ex){
                     ex.printStackTrace();
                     JOptionPane.showMessageDialog(null,"El campo necesita un numero!");
