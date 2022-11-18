@@ -8,6 +8,7 @@ public class Ventana extends JFrame {
     private static String [] columnas = {"id","nombre","precio","cantidad"};
     private static MyTableModel model = new MyTableModel(null, columnas);
 
+
     private JTextField LeerCantidad;
     private JPanel panel1;
     private JTextField LeerNombre;

@@ -16,16 +16,6 @@ public class Almacen implements Serializable {
         }
     }
 
-    public void retirarProducto(Producto producto, int cantidad){
-        producto.retirarCantidad(cantidad);
-    }
-
-    public void verProductos() {
-        for (Producto producto: listaProductos) {
-            System.out.println(producto.getNombre() + "\n");
-        }
-    }
-
     public boolean existeProducto(String nombre){
         for (Producto p: listaProductos) {
             if (p.comparar(nombre)) return true;
@@ -47,14 +37,5 @@ public class Almacen implements Serializable {
         if (cant > 0){
             return "Productos con poco Stock: \n" + informe;
         } else return "Todo esta bien!";
-    }
-
-    public void modificarProducto(String nombre , double precio){
-
-        for (Producto p:listaProductos) {
-            if(p.comparar(nombre)){
-                p.setPrecio(precio);
-            }
-        }
     }
 }
